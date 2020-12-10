@@ -8,31 +8,10 @@ import java.util.Scanner;
  * Учесть переход на следующий месяц, а также следующий год.
  * Форматирование строки "День.Месяц.Год" вынести в отдельную функцию.
  */
-
-public class Date {
-
+public class DetermineDate {
     public static void main(String[] args) {
 
-        short dateDey = 0;
-        short dateMonth = 0;
-        short dateYear = 0;
-        int numberAfterNumberDays = 1;
-        boolean matchingEnteredData = false;
-
-        while (!matchingEnteredData) {
-            System.out.print("Введите число: ");
-            dateDey = entryConsole();
-            System.out.print("Введите месяц: ");
-            dateMonth = entryConsole();
-            System.out.print("Введите год: ");
-            dateYear = entryConsole();
-            System.out.println("Узнать дату через веденное количество дней. Введите число: ");
-            numberAfterNumberDays = entryConsoleInt();
-
-            matchingEnteredData = verificationOfEnteredData(dateDey, dateMonth, dateYear);
-        }
-
-        getDate(dateDey, dateMonth, dateYear, numberAfterNumberDays);
+        getDate();
 
     }
 
@@ -127,55 +106,73 @@ public class Date {
 
     }
 
-    public static void getDate(short dateDey, short dateMonth, short dateYear, int numberAfterNumberDays) {
+    public static void getDate() {
 
+        short day = 0;
+        short month = 0;
+        short year = 0;
+        int numberAfterNumberDays = 1;
+        boolean matchingEnteredData = false;
+
+        while (!matchingEnteredData) {
+            System.out.print("Введите число: ");
+            day = entryConsole();
+            System.out.print("Введите месяц: ");
+            month = entryConsole();
+            System.out.print("Введите год: ");
+            year = entryConsole();
+            System.out.print("Узнать дату через веденное количество дней. Введите число: ");
+            numberAfterNumberDays = entryConsoleInt();
+
+            matchingEnteredData = verificationOfEnteredData(day, month, year);
+        }
         short monthsOfYear = 12;
 
-        boolean isLeapYear = isLeapYear(dateYear);
+        boolean isLeapYear = isLeapYear(year);
 
         if (numberAfterNumberDays >= 0) {
 
             while (numberAfterNumberDays != 0) {
 
-                int daysInOfAMonth = daysInAMonth(dateMonth, isLeapYear);
+                int daysInOfAMonth = daysInAMonth(month, isLeapYear);
 
-                dateDey++;
+                day++;
                 numberAfterNumberDays--;
 
-                if (dateDey > daysInOfAMonth) {
-                    dateDey = 1;
-                    dateMonth++;
+                if (day > daysInOfAMonth) {
+                    day = 1;
+                    month++;
 
-                    if (dateMonth > monthsOfYear) {
-                        dateMonth = 1;
-                        dateYear++;
-                        isLeapYear = isLeapYear(dateYear);
+                    if (month > monthsOfYear) {
+                        month = 1;
+                        year++;
+                        isLeapYear = isLeapYear(year);
 
                     }
                 }
             }
 
-            System.out.println(dateDey + "." + dateMonth + "." + dateYear);
+            System.out.println(day + "." + month + "." + year);
 
         } else {
 
             while (numberAfterNumberDays < 0) {
 
-                int daysInOfAMonth = daysInAMonth(dateMonth, isLeapYear);
+                int daysInOfAMonth = daysInAMonth(month, isLeapYear);
 
-                dateDey--;
+                day--;
                 numberAfterNumberDays++;
 
-                if (dateDey == 0) {
-                    dateMonth--;
-                    isLeapYear = isLeapYear(dateYear);
-                    dateDey = (short) daysInOfAMonth;
+                if (day == 0) {
+                    month--;
+                    isLeapYear = isLeapYear(year);
+                    day = (short) daysInOfAMonth;
 
-                    if (dateMonth == 0) {
-                        dateYear--;
-                        dateMonth = monthsOfYear;
+                    if (month == 0) {
+                        year--;
+                        month = monthsOfYear;
 
-                        if (dateYear < 0) {
+                        if (year < 0) {
                             break;
                         }
                     }
@@ -183,11 +180,11 @@ public class Date {
 
             }
 
-            if (dateYear < 0) {
+            if (year < 0) {
                 System.out.println("Год не может быть отрицательным!");
 
             } else {
-                System.out.println(dateDey + "." + dateMonth + "." + dateYear);
+                System.out.println(day + "." + month + "." + year);
             }
         }
     }

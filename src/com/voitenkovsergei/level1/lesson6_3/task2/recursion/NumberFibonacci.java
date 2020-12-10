@@ -6,9 +6,7 @@ import java.util.Scanner;
  * Написать программу, вычисляющую и отображающую все числа Фибоначчи меньше введённого пользователем целого числа.
  * Решить двумя способами: с помощью цикла и с помощью рекурсии.
  */
-
 public class NumberFibonacci {
-
     public static void main(String[] args) {
 
         int numberUser = entryConsole("Введите челое число: ");

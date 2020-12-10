@@ -5,9 +5,7 @@ import java.util.Scanner;
 /**
  * Написать программу, вычисляющую сумму цифр введённого пользователем целого числа.
  */
-
 public class sumNumbers {
-
     public static void main(String[] args) {
 
         int numberUser = entryConsole("Введите целое число: ");

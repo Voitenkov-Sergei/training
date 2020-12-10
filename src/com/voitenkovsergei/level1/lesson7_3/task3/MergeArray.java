@@ -13,18 +13,19 @@ import java.util.Arrays;
  * <p>
  * Результат: {1, 5, 2, 6, 3, 7, 4, 5}
  */
-
 public class MergeArray {
-
     public static void main(String[] args) {
-        int[] arrayOne = new int[]{1, 3, 5, 7, 9};
-        int[] arrayTwo = new int[]{2, 4, 6};
-        System.out.println(Arrays.toString(arrayOne));
-        System.out.println(Arrays.toString(arrayTwo));
-        concatenateArrays(arrayOne, arrayTwo);
+        int[] array1 = new int[]{1, 3, 5, 7, 9};
+        int[] array2 = new int[]{2, 4, 6};
+        int[] arrayResult = (concatenateArrays(array1, array2));
+        System.out.println(Arrays.toString(array1));
+        System.out.println(Arrays.toString(array2));
+        System.out.println(Arrays.toString(arrayResult));
+
+
     }
 
-    public static void concatenateArrays(int[] arrayOne, int[] arrayTwo) {
+    public static int[] concatenateArrays(int[] arrayOne, int[] arrayTwo) {
 
         int[] arrayThree = new int[arrayOne.length + arrayTwo.length];
         int countOne = 0;
@@ -32,7 +33,7 @@ public class MergeArray {
 
         for (int i = 0; i < arrayThree.length; i++) {
 
-            if (countOne == countTwo && countOne != arrayOne.length || countTwo == arrayTwo.length) {
+            if ((countOne == countTwo && countOne != arrayOne.length) || countTwo == arrayTwo.length) {
 
                 arrayThree[i] = arrayOne[countOne];
                 countOne++;
@@ -46,7 +47,7 @@ public class MergeArray {
 
         }
 
-        System.out.println(Arrays.toString(arrayThree));
+        return arrayThree;
 
     }
 

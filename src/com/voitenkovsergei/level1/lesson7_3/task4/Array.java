@@ -7,26 +7,49 @@ import java.util.Arrays;
  * возвращает одномерный массив со всеми элементами двумерного.
  */
 public class Array {
-
     public static void main(String[] args) {
 
-        int[] arrayOne = new int[] {1,3,5,7,9};
-        int[] arrayTwo = new int[] {2,4,6,8};
-        int[] array = linearize(arrayOne, arrayTwo);
-        System.out.println(Arrays.toString(arrayOne));
-        System.out.println(Arrays.toString(arrayTwo));
-        System.out.println(Arrays.toString(array));
+        int[][] array = new int[][]{{1, 3, 5, 7, 9}, {2, 4, 6, 8}};
+        int[] arrayResult = linearize(array);
+
+        System.out.println(Arrays.deepToString(array));
+        System.out.println(Arrays.toString(arrayResult));
 
     }
 
-    public static int[] linearize(int[] arrayOne, int[] arrayTwo){
+    public static int[] linearize(int[][] array) {
 
-        int[] array = new int[arrayOne.length + arrayTwo.length];
+        int[] arrayResult = new int[counter(array)];
 
-        System.arraycopy(arrayOne,0,array,0, arrayOne.length);
-        System.arraycopy(arrayTwo, 0, array, arrayOne.length, arrayTwo.length);
+        for (int index = 0; index < arrayResult.length; index++) {
 
-        return array;
+            for (int i = 0; i < array.length; i++) {
+
+                for (int j = 0; j < array[i].length; j++) {
+                    arrayResult[index] = array[i][j];
+                    index++;
+                }
+
+            }
+
+        }
+
+        return arrayResult;
+    }
+
+    public static int counter(int[][] array) {
+
+        int count = 0;
+
+        for (int i = 0; i < array.length; i++) {
+
+            for (int j = 0; j < array[i].length; j++) {
+                count++;
+            }
+
+        }
+
+        return count;
     }
 
 }

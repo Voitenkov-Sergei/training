@@ -12,9 +12,7 @@ import java.util.Scanner;
  * d. Максимальное количество дневных осадков за этот период
  * Не использовать массивы!
  */
-
 public class Precipitation {
-
     public static void main(String[] args) {
 
         int amountDays = entryConsole("Введите количество дней: ");

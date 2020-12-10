@@ -11,9 +11,7 @@ import java.util.Scanner;
  * - функция isZero, определяющая, является ли число нулём
  * - функция discriminant, вычисляющая дискриминант
  */
-
 public class SquareRoot {
-
     public static void main(String[] args) {
 
         int numberA = consoleInput("numberA");
