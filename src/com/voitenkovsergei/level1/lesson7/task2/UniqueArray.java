@@ -1,4 +1,4 @@
-package com.voitenkovsergei.level1.lesson7_3.task2;
+package com.voitenkovsergei.level1.lesson7.task2;
 
 import java.util.Arrays;
 
@@ -8,27 +8,21 @@ import java.util.Arrays;
  */
 public class UniqueArray {
     public static void main(String[] args) {
-
-        int[] array = new int[] {1,1,2,3,4,4,4,8,6,7,7,2,1};
-
-        System.out.println(Arrays.toString(array) + " - изначальный массив.");
+        int[] array = {1, 1, 2, 3, 4, 4, 4, 8, 6, 7, 7, 2, 1};
         removeDuplicateNumbers(array);
     }
 
-    public static void removeDuplicateNumbers(int[] array){
+    public static int[] removeDuplicateNumbers(int[] array) {
 
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
 
-            for(int j = i + 1; j < array.length; j++){
-
-                if (array[j] == array[i]){
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] == array[i]) {
                     array[j] = 0;
                 }
-
             }
-
         }
 
-        System.out.println( Arrays.toString(array) + " - массив отредактированный.");
+        return array;
     }
 }

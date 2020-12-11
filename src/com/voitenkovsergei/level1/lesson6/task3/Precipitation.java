@@ -1,4 +1,4 @@
-package com.voitenkovsergei.level1.lesson6_3.task3;
+package com.voitenkovsergei.level1.lesson6.task3;
 
 import java.util.Scanner;
 
@@ -15,15 +15,16 @@ import java.util.Scanner;
 public class Precipitation {
     public static void main(String[] args) {
 
-        int amountDays = entryConsole("Введите количество дней: ");
-        outputAmountDays(amountDays);
+        int amountDays = entryConsole();
+        int sumPrecipitation = outputAmountDays(amountDays);
+        double averageRainfall = averageRainfall(sumPrecipitation, amountDays);
 
+        System.out.println("Количество дней = " + amountDays + '\n'
+                + "Сумму осадков за этот период = " + sumPrecipitation + '\n'
+                + "Среднее количество осадков за этот период = " + averageRainfall);
     }
 
-    public static int entryConsole(String text) {
-
-        System.out.print(text);
-
+    public static int entryConsole() {
         @SuppressWarnings("resource")
         Scanner scanner = new Scanner(System.in);
 
@@ -32,45 +33,31 @@ public class Precipitation {
         }
 
         return scanner.nextInt();
-
     }
 
-
-    public static void outputAmountDays(int amountDays) {
-
-        int precipitationAmount = 0;
+    public static int outputAmountDays(int amountDays) {
+        int sumPrecipitation = 0;
         int maximumPrecipitation = 0;
 
         for (int i = 0; i < amountDays; i++) {
+            int rainfallPerDay = entryConsole();
+            sumPrecipitation += rainfallPerDay;
 
-            int rainfallPerDay = entryConsole("Введите количество осадков в " + (i + 1) + " день. ");
-            precipitationAmount += rainfallPerDay;
-
-            if (maximumPrecipitation < rainfallPerDay) {
+            if (rainfallPerDay > maximumPrecipitation) {
                 maximumPrecipitation = rainfallPerDay;
             }
-
         }
-        System.out.println();
-        System.out.println("Количество дней = " + amountDays);
-        System.out.println("Всего выпало " + precipitationAmount + " осадков.");
-        averageRainfall(amountDays, precipitationAmount);
+
         maximumPrecipitation(maximumPrecipitation);
 
+        return sumPrecipitation;
     }
 
-    public static void averageRainfall(int amountDays, int precipitationAmount) {
-
-        int averageRainfall = precipitationAmount / amountDays;
-        System.out.println("Среднее количество выпавших осадков за " + amountDays + " дней(я) = " + averageRainfall);
-
+    public static double averageRainfall(int precipitationAmount, int amountDays) {
+        return (double) precipitationAmount / amountDays;
     }
 
     public static void maximumPrecipitation(int maximumPrecipitation) {
-
         System.out.println("Максимальное количество осадков = " + maximumPrecipitation);
-
     }
-
-
 }

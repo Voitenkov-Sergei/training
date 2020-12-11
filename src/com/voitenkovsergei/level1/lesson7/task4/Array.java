@@ -1,4 +1,4 @@
-package com.voitenkovsergei.level1.lesson7_3.task4;
+package com.voitenkovsergei.level1.lesson7.task4;
 
 import java.util.Arrays;
 
@@ -8,17 +8,14 @@ import java.util.Arrays;
  */
 public class Array {
     public static void main(String[] args) {
-
-        int[][] array = new int[][]{{1, 3, 5, 7, 9}, {2, 4, 6, 8}};
+        int[][] array = {{1, 3, 5, 7, 9}, {2, 4, 6, 8}};
         int[] arrayResult = linearize(array);
 
         System.out.println(Arrays.deepToString(array));
         System.out.println(Arrays.toString(arrayResult));
-
     }
 
     public static int[] linearize(int[][] array) {
-
         int[] arrayResult = new int[counter(array)];
 
         for (int index = 0; index < arrayResult.length; index++) {
@@ -29,16 +26,13 @@ public class Array {
                     arrayResult[index] = array[i][j];
                     index++;
                 }
-
             }
-
         }
 
         return arrayResult;
     }
 
     public static int counter(int[][] array) {
-
         int count = 0;
 
         for (int i = 0; i < array.length; i++) {
@@ -46,10 +40,8 @@ public class Array {
             for (int j = 0; j < array[i].length; j++) {
                 count++;
             }
-
         }
 
         return count;
     }
-
 }

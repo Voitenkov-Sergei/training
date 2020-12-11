@@ -1,4 +1,4 @@
-package com.voitenkovsergei.level1.lesson7_3.task1;
+package com.voitenkovsergei.level1.lesson7.task1;
 
 import java.util.Arrays;
 
@@ -8,27 +8,23 @@ import java.util.Arrays;
  */
 public class LoopArray {
     public static void main(String[] args) {
-
-        cyclically();
+        int[] array = {1, 2, 3, 4, 5};
+        int shiftsNumbers = 5;
+        System.out.println(Arrays.toString(cyclically(array, shiftsNumbers)));
     }
 
-    public static void cyclically() {
+    public static int[] cyclically(int[] array, int shiftsNumbers) {
 
-        int count = 10;
+        while (shiftsNumbers != 0) {
+            int temp = array[array.length - 1];
 
-        int[] array = new int[] {1,2,3,4,5};
+            for (int i = array.length - 1; i > 0; i--) {
+                array[i] = array[i - 1];
+            }
 
-        while (count != 0){
-
-            int temp = array[array.length-1];
-
-            System.arraycopy(array, 0, array, 1, array.length - 1);
-
+            shiftsNumbers--;
             array[0] = temp;
-            System.out.println(Arrays.toString(array));
-            count--;
         }
-
+        return array;
     }
-
 }
