@@ -1,8 +1,5 @@
 package com.voitenkovsergei.level2.lesson10.task2;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-
 /**
  * Написать программу, преобразующую строку, содержащую число в римском формате, в число в арабском формате.
  * Границы чисел: от 1 до 3999. Предусмотреть случай, когда меньший символ идёт перед большим:
@@ -20,12 +17,12 @@ import java.util.Arrays;
 public class ArabicFormat {
 
     public static void main(String[] args) {
-        String romanNumber = "CCXXXVIII";
-        romanNumber = String.valueOf(getAnArabicNumber(romanNumber));
-        System.out.println(romanNumber);
+        String romanNumber = "XVIII";
+        int arabicNumber = getArabicNumber(romanNumber);
+        System.out.println(arabicNumber);
     }
 
-    public static int getAnArabicNumber(String text) {
+    public static int getArabicNumber(String text) {
         int number = 0;
 
         for (int i = 0; i < text.length(); i++) {
@@ -34,18 +31,14 @@ public class ArabicFormat {
             int symbol3 = 0;
 
             if (text.length() - i == 1) {
-                symbol1 = getNumber(String.valueOf(text.charAt(i)));
+                symbol1 = getNumber(text.charAt(i));
+            } else if (text.length() - i == 2) {
+                symbol1 = getNumber(text.charAt(i));
+                symbol2 = getNumber(text.charAt(i + 1));
             } else {
-                String letter = String.valueOf(text.charAt(i + 1));
-
-                if (text.length() - i == 2) {
-                    symbol1 = getNumber(String.valueOf(text.charAt(i)));
-                    symbol2 = getNumber(letter);
-                } else {
-                    symbol1 = getNumber(String.valueOf(text.charAt(i)));
-                    symbol2 = getNumber(letter);
-                    symbol3 = getNumber(String.valueOf(text.charAt(i + 2)));
-                }
+                symbol1 = getNumber(text.charAt(i));
+                symbol2 = getNumber(text.charAt(i + 1));
+                symbol3 = getNumber(text.charAt(i + 2));
             }
 
             if (symbol1 == symbol2 && symbol2 == symbol3) {
@@ -68,15 +61,15 @@ public class ArabicFormat {
         return number;
     }
 
-    public static int getNumber(String letter) {
+    public static int getNumber(char letter) {
         return switch (letter) {
-            case "I" -> 1;
-            case "V" -> 5;
-            case "X" -> 10;
-            case "L" -> 50;
-            case "C" -> 100;
-            case "D" -> 500;
-            case "M" -> 1000;
+            case 'I' -> 1;
+            case 'V' -> 5;
+            case 'X' -> 10;
+            case 'L' -> 50;
+            case 'C' -> 100;
+            case 'D' -> 500;
+            case 'M' -> 1000;
             default -> 0;
         };
     }

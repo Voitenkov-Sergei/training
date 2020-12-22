@@ -10,9 +10,8 @@ public class Palindrome {
         System.out.println(isPalindrome(text));
     }
 
-    public static boolean isPalindrome(String text){
-        StringBuffer stringBuffer = new StringBuffer(text);
-        stringBuffer = stringBuffer.reverse();
+    public static boolean isPalindrome(String text) {
+        StringBuffer stringBuffer = new StringBuffer(text).reverse();
 
         return stringBuffer.toString().equals(text);
     }
