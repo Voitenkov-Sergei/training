@@ -17,32 +17,24 @@ public class Test {
         for (Figure figure : figures) {
             System.out.println(figure.getName() + ":");
             System.out.println(figure.toString());
+            System.out.println("площадь = '" + figure.countArea() + "'");
+            System.out.println("периметр = '" + figure.countPerimeter() + "'");
 
             if (figure instanceof Circle) {
-                System.out.println("площадь = '" + figure.countArea() + "'");
-                System.out.println("периметр = '" + figure.countPerimeter() + "'");
                 System.out.println("диаметр = '" + ((Circle) figure).countDiameter() + "'");
                 System.out.println("радиус = '" + ((Circle) figure).countRadius() + "'");
                 ShapeUtils.toPrint(figure);
             } else if (figure instanceof Parallelogram) {
-                System.out.println("площадь = '" + figure.countArea() + "'");
-                System.out.println("периметр = '" + figure.countPerimeter() + "'");
                 System.out.println("диагональ = '" + ((Parallelogram) figure).countDiagonal() + "'");
                 System.out.println("высота = '" + ((Parallelogram) figure).countHeight() + "'");
                 ShapeUtils.toPrint(figure);
             } else if (figure instanceof Rectangle) {
-                System.out.println("площадь = '" + figure.countArea() + "'");
-                System.out.println("периметр = '" + figure.countPerimeter() + "'");
                 System.out.println("диагональ = '" + ((Rectangle) figure).countDiagonal() + "'");
                 ShapeUtils.toPrint(figure);
             } else if (figure instanceof Square) {
-                System.out.println("площадь = '" + figure.countArea() + "'");
-                System.out.println("периметр = '" + figure.countPerimeter() + "'");
                 System.out.println("диагональ = '" + ((Square) figure).countDiagonal() + "'");
                 ShapeUtils.toPrint(figure);
             } else if (figure instanceof Triangle) {
-                System.out.println("площадь = '" + figure.countArea() + "'");
-                System.out.println("периметр = '" + figure.countPerimeter() + "'");
                 System.out.println("высота = '" + ((Triangle) figure).countHeight() + "'");
                 ShapeUtils.toPrint(figure);
             }
