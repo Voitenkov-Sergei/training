@@ -2,17 +2,20 @@ package com.voitenkovsergei.level2.lesson15.task1;
 
 public class Side {
 
-    private double value;
+    private final double value;
 
     public Side(double value) {
         this.value = value;
     }
 
-    public double getValue() {
-        return value;
+    @Override
+    public String toString() {
+        return "Side{" +
+                "value=" + value +
+                '}';
     }
 
-    public void setValue(double value) {
-        this.value = value;
+    public double getValue() {
+        return value;
     }
 }

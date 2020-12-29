@@ -3,63 +3,61 @@ package com.voitenkovsergei.level2.lesson15.task1;
 public class Test {
 
     public static void main(String[] args) {
-        Rectangle rectangle = new Rectangle("Прямоугольник", 6, 8);
-        Rectangle rectangle2 = new Rectangle("Прямоугольник2", 6, 8);
+        Figure rectangle = new Rectangle("Прямоугольник1", new Side(4), new Side(6));
+        Figure rectangle2 = new Rectangle("Прямоугольник2", new Side(4), new Side(6));
+        Figure square = new Square("Квадрат", new Side(4));
+        Figure triangle = new Triangle("Треугольник", new Side(6), new Side(6), new Side(6));
+        Figure parallelogram = new Parallelogram("Параллелограмм", new Side(6), new Side(6), 30);
+        Figure circle = new Circle("Круг", new Point(2, 0));
+        getResult(rectangle, rectangle2, square, triangle, parallelogram, circle);
+        checkAreaMatch(rectangle, rectangle2, square, triangle, parallelogram, circle);
+    }
 
-        rectangle.countArea();
-        rectangle.countDiagonal();
-        rectangle.countPerimeter();
-        rectangle2.countArea();
-        rectangle2.countDiagonal();
-        rectangle2.countPerimeter();
-        ShapeUtils.toPrint(rectangle);
-        System.out.println("Сумма площадей равны ? " + rectangle.isAreaEqual(rectangle2.getArea()));
-        System.out.println(rectangle.toString());
-        System.out.println(rectangle2.toString());
+    public static void getResult(Figure... figures) {
+        for (Figure figure : figures) {
+            System.out.println(figure.getName() + ":");
+            System.out.println(figure.toString());
 
-        Square square = new Square("Квадрат", 6);
-        Square square2 = new Square("Квадрат2", 5);
+            if (figure instanceof Circle) {
+                System.out.println("площадь = '" + figure.countArea() + "'");
+                System.out.println("периметр = '" + figure.countPerimeter() + "'");
+                System.out.println("диаметр = '" + ((Circle) figure).countDiameter() + "'");
+                System.out.println("радиус = '" + ((Circle) figure).countRadius() + "'");
+                ShapeUtils.toPrint(figure);
+            } else if (figure instanceof Parallelogram) {
+                System.out.println("площадь = '" + figure.countArea() + "'");
+                System.out.println("периметр = '" + figure.countPerimeter() + "'");
+                System.out.println("диагональ = '" + ((Parallelogram) figure).countDiagonal() + "'");
+                System.out.println("высота = '" + ((Parallelogram) figure).countHeight() + "'");
+                ShapeUtils.toPrint(figure);
+            } else if (figure instanceof Rectangle) {
+                System.out.println("площадь = '" + figure.countArea() + "'");
+                System.out.println("периметр = '" + figure.countPerimeter() + "'");
+                System.out.println("диагональ = '" + ((Rectangle) figure).countDiagonal() + "'");
+                ShapeUtils.toPrint(figure);
+            } else if (figure instanceof Square) {
+                System.out.println("площадь = '" + figure.countArea() + "'");
+                System.out.println("периметр = '" + figure.countPerimeter() + "'");
+                System.out.println("диагональ = '" + ((Square) figure).countDiagonal() + "'");
+                ShapeUtils.toPrint(figure);
+            } else if (figure instanceof Triangle) {
+                System.out.println("площадь = '" + figure.countArea() + "'");
+                System.out.println("периметр = '" + figure.countPerimeter() + "'");
+                System.out.println("высота = '" + ((Triangle) figure).countHeight() + "'");
+                ShapeUtils.toPrint(figure);
+            }
+            System.out.println();
+        }
+    }
 
-        square.countArea();
-        square.countPerimeter();
-        square.countArea();
-        square2.countArea();
-        square2.countPerimeter();
-        square2.countArea();
-        rectangle.isAreaEqual(rectangle2.getArea());
-        ShapeUtils.toPrint(square);
-        System.out.println("Сумма площадей равны ? " + square.isAreaEqual(square2.getArea()));
-        System.out.println(square.toString());
-        System.out.println(square2.toString());
+    public static void checkAreaMatch(Figure... figures) {
+        for (int i = 0; i < figures.length; i++) {
 
-        Triangle triangle = new Triangle("Треугольник", 6, 6, 8);
-        Triangle triangle2 = new Triangle("Треугольник2", 6, 6, 6);
-
-        triangle.countArea();
-        triangle.countDiagonal();
-        triangle.countPerimeter();
-        triangle2.countArea();
-        triangle2.countDiagonal();
-        triangle2.countPerimeter();
-        ShapeUtils.toPrint(triangle);
-        System.out.println("Сумма площадей равны ? " + triangle.isAreaEqual(triangle2.getArea()));
-        System.out.println(triangle.toString());
-        System.out.println(triangle2.toString());
-
-        Parallelogram parallelogram = new Parallelogram("Треугольник", 6, 6, 30);
-        Parallelogram parallelogram2 = new Parallelogram("Треугольник2", 6, 6, 40);
-
-        parallelogram.countArea();
-        parallelogram.countDiagonal();
-        parallelogram.countPerimeter();
-        parallelogram.countHeight();
-        parallelogram2.countArea();
-        parallelogram2.countDiagonal();
-        parallelogram2.countPerimeter();
-        parallelogram2.countHeight();
-        ShapeUtils.toPrint(parallelogram);
-        System.out.println("Сумма площадей равны ? " + parallelogram.isAreaEqual(parallelogram2.getArea()));
-        System.out.println(parallelogram.toString());
-        System.out.println(parallelogram2.toString());
+            for (int j = i + 1; j < figures.length; j++) {
+                boolean bool = (figures[i].isAreaEqual(figures[j]));
+                System.out.println("Площадь фигуры '" + figures[i].getName()
+                        + "' = площади фигуры '" + figures[j].getName() + "' - ? " + bool);
+            }
+        }
     }
 }

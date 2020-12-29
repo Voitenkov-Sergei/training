@@ -1,34 +1,37 @@
 package com.voitenkovsergei.level2.lesson15.task1;
 
-public class Square extends Polygon implements IPolygon {
+public class Square extends Figure implements CalculatingDiagonal {
 
-    private Side side;
+    private final Side side;
 
-    public Square(String name, double side) {
+    public Square(String name, Side side) {
         super(name);
-        this.side = new Side(side);
+        this.side = side;
     }
 
     @Override
-    public void countArea() {
-        setArea(Math.pow(side.getValue(), 2));
+    public double countArea() {
+        return Math.pow(side.getValue(), 2);
     }
 
     @Override
-    public void countPerimeter() {
-        setPerimeter(side.getValue() * 4);
+    public double countPerimeter() {
+        return side.getValue() * 4;
     }
 
     @Override
-    public void countDiagonal() {
-        setDiagonal(Math.sqrt(2) * side.getValue());
+    public double countDiagonal() {
+        return Math.sqrt(2) * side.getValue();
+    }
+
+    @Override
+    public String toString() {
+        return "Square{" +
+                "side=" + side +
+                "} " + super.toString();
     }
 
     public Side getSide() {
         return side;
-    }
-
-    public void setSide(Side side) {
-        this.side = side;
     }
 }

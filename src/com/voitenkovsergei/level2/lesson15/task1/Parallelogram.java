@@ -1,83 +1,60 @@
 package com.voitenkovsergei.level2.lesson15.task1;
 
-public class Parallelogram extends Polygon implements IPolygon {
+public class Parallelogram extends Figure implements CalculatingDiagonal, CalculatingHeight {
 
-    private Side side;
-    private Side side2;
-    private double angle;
-    private double height;
+    private final Side side1;
+    private final Side side2;
+    private final double angle;
 
-    public Parallelogram(String name, double side, double side2, double angle) {
+    public Parallelogram(String name, Side side1, Side side2, double angle) {
         super(name);
-        this.side = new Side(side);
-        this.side2 = new Side(side2);
+        this.side1 = side1;
+        this.side2 = side2;
         this.angle = Math.toRadians(angle);
     }
 
     @Override
-    public void countArea() {
-        setArea(side.getValue() * side2.getValue() * Math.sin(angle));
+    public double countArea() {
+        return side1.getValue() * side2.getValue() * Math.sin(angle);
     }
 
     @Override
-    public void countPerimeter() {
-        setPerimeter(2 * side.getValue() + 2 * side2.getValue());
+    public double countPerimeter() {
+        return 2 * side1.getValue() + 2 * side2.getValue();
     }
 
     @Override
-    public void countDiagonal() {
-        setDiagonal(Math.sqrt(Math.pow(side.getValue(), 2)
+    public double countDiagonal() {
+        return Math.sqrt(Math.pow(side1.getValue(), 2)
                 + Math.pow(side2.getValue(), 2)
-                - 2 * side.getValue()
+                - 2 * side1.getValue()
                 * side2.getValue()
-                * Math.cos(angle)));
+                * Math.cos(angle));
+    }
+
+    @Override
+    public double countHeight() {
+        return side1.getValue() * Math.sin(angle);
     }
 
     @Override
     public String toString() {
-        return "Parallelogram{" + super.toString() +
-                "angle=" + angle +
-                ", height=" + height +
-                "} ";
+        return "Parallelogram{" +
+                "side1=" + side1 +
+                ", side2=" + side2 +
+                ", angle=" + angle +
+                "} " + super.toString();
     }
 
-    public void countHeight() {
-        setHeight(side.getValue() * Math.sin(angle));
-    }
-
-    public Side getSide() {
-        return side;
-    }
-
-    public void setSide(Side side) {
-        this.side = side;
+    public Side getSide1() {
+        return side1;
     }
 
     public Side getSide2() {
         return side2;
     }
 
-    public void setSide2(Side side2) {
-        this.side2 = side2;
-    }
-
     public double getAngle() {
         return angle;
-    }
-
-    public void setAngle(double angle) {
-        this.angle = angle;
-    }
-
-    public void setRightAngle(double angle) {
-        this.angle = angle;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
     }
 }

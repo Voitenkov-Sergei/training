@@ -1,17 +1,20 @@
 package com.voitenkovsergei.level2.lesson15.task1;
 
-public class ShapeUtils {
+public final class ShapeUtils {
 
-    public static boolean isRectangle(Object obj) {
-        return obj instanceof Rectangle;
+    private ShapeUtils() {
     }
 
-    public static boolean isTriangle(Object obj) {
-        return obj instanceof Triangle;
+    public static boolean isRectangle(Figure figure) {
+        return figure instanceof Rectangle;
     }
 
-    public static void toPrint(Object obj){
-        System.out.println(Object.class.getSimpleName() + " является прямоугольником ? " + isRectangle(obj));
-        System.out.println(Object.class.getSimpleName() + " является треугольником ? " + isTriangle(obj));
+    public static boolean isTriangle(Figure figure) {
+        return figure instanceof Triangle;
+    }
+
+    public static void toPrint(Figure figure) {
+        System.out.println(figure.getName() + " является прямоугольником ? " + isRectangle(figure));
+        System.out.println(figure.getName() + " является треугольником ? " + isTriangle(figure));
     }
 }

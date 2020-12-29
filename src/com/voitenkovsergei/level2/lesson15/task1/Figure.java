@@ -34,60 +34,26 @@ package com.voitenkovsergei.level2.lesson15.task1;
  * - В этом задании нет одного правильного решения, подойдите к
  * нему творчески.
  */
-public abstract class Polygon {
+public abstract class Figure implements CalculatingFigure {
 
-    private String name;
-    private double area;
-    private double perimeter;
-    private double diagonal;
+    private final String name;
 
-    public Polygon(String name) {
+    public Figure(String name) {
         this.name = name;
+    }
+
+    public boolean isAreaEqual(Figure figure) {
+        return this.countArea() == figure.countArea();
     }
 
     @Override
     public String toString() {
-        return "" + getClass().getSimpleName() + "{" +
+        return "Figure{" +
                 "name='" + name + '\'' +
-                ", area=" + area +
-                ", perimeter=" + perimeter +
-                ", diagonal=" + diagonal +
                 '}';
-    }
-
-    public boolean isAreaEqual(double area) {
-        return this.area == area;
     }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getArea() {
-        return area;
-    }
-
-    public void setArea(double area) {
-        this.area = area;
-    }
-
-    public double getPerimeter() {
-        return perimeter;
-    }
-
-    public void setPerimeter(double perimeter) {
-        this.perimeter = perimeter;
-    }
-
-    public double getDiagonal() {
-        return diagonal;
-    }
-
-    public void setDiagonal(double diagonal) {
-        this.diagonal = diagonal;
     }
 }

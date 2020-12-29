@@ -1,44 +1,44 @@
 package com.voitenkovsergei.level2.lesson15.task1;
 
-public class Rectangle extends Polygon implements IPolygon {
+public class Rectangle extends Figure implements CalculatingDiagonal {
 
-    Side side;
-    Side side2;
+    private final Side side1;
+    private final Side side2;
 
-    public Rectangle(String name, double side, double side2) {
+    public Rectangle(String name, Side side1, Side side2) {
         super(name);
-        this.side = new Side(side);
-        this.side2 = new Side(side2);
+        this.side1 = side1;
+        this.side2 = side2;
     }
 
     @Override
-    public void countArea() {
-        setArea(side.getValue() * side2.getValue());
+    public double countArea() {
+        return side1.getValue() * side2.getValue();
     }
 
     @Override
-    public void countPerimeter() {
-        setPerimeter(2 * side.getValue() + 2 * side2.getValue());
+    public double countPerimeter() {
+        return 2 * side1.getValue() + 2 * side2.getValue();
     }
 
     @Override
-    public void countDiagonal() {
-        setDiagonal(Math.sqrt(Math.pow(side.getValue(), 2) + Math.pow(side2.getValue(), 2)));
+    public double countDiagonal() {
+        return Math.sqrt(Math.pow(side1.getValue(), 2) + Math.pow(side2.getValue(), 2));
     }
 
-    public Side getSide() {
-        return side;
+    @Override
+    public String toString() {
+        return "Rectangle{" +
+                "side1=" + side1 +
+                ", side2=" + side2 +
+                "} " + super.toString();
     }
 
-    public void setSide(Side side) {
-        this.side = side;
+    public Side getSide1() {
+        return side1;
     }
 
     public Side getSide2() {
         return side2;
-    }
-
-    public void setSide2(Side side2) {
-        this.side2 = side2;
     }
 }
