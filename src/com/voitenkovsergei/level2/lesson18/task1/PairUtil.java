@@ -5,7 +5,7 @@ public final class PairUtil {
     private PairUtil() {
     }
 
-    public static Pair<V, K> swap(Pair<K, V> pair) {
-        return new Pair<>(pair.getValue(), pair.getKey());
+    public static <X, Y> Pair<Y, X> swap(Pair<X, Y> kvPair) {
+        return new Pair<>(kvPair.getValue(), kvPair.getKey());
     }
 }
